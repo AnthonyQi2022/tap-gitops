@@ -1,0 +1,35 @@
+apiVersion: data.packaging.carvel.dev/v1alpha1
+kind: Package
+metadata:
+  name: hello-nodejs-carvel.sky.tap.20240605032314.0.0+build.c05aa59
+spec:
+  refName: hello-nodejs-carvel.sky.tap
+  version: 20240605032314.0.0+build.c05aa59
+  releaseNotes: |
+    Release v20240605032314.0.0+build.c05aa59 of package hello-nodejs-carvel.sky.tap
+  template:
+    spec:
+      fetch:
+      - imgpkgBundle:
+          image: northernlight0808new.azurecr.io/tanzu-application-platform/workloads/hello-nodejs-carvel-sky-bundle@sha256:246f6c0b3e171331dde6bbed13b8a7b9dc8c69114c7d97e1ec478d6747bf7c19
+      template:
+      - ytt:
+          paths:
+          - .
+      - kbld:
+          paths:
+          - .imgpkg/images.yml
+          - '-'
+      deploy:
+      - kapp: {}
+  valuesSchema:
+    openAPIv3:
+      type: object
+      additionalProperties: false
+      properties:
+        replicas:
+          title: Replicas
+          type: integer
+          description: Number of replicas.
+          default: 3
+
