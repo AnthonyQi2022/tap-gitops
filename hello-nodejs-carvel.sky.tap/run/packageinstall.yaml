@@ -1,0 +1,14 @@
+---
+apiVersion: packaging.carvel.dev/v1alpha1
+kind: PackageInstall
+metadata:
+  name: hello-nodejs-carvel.sky.tap
+spec:
+  serviceAccountName: app-package-and-pkgi-sa
+  packageRef:
+    refName: hello-nodejs-carvel.sky.tap
+    versionSelection:
+      constraints: >=0.0.0
+  values:
+  - secretRef:
+      name: app-values
