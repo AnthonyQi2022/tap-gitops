@@ -8,7 +8,7 @@ spec:
   packageRef:
     refName: hello-nodejs-carvel.sky.tap
     versionSelection:
-      constraints: 20240612101010.0.0
+      constraints: 20240605032314.0.0+build.c05aa59
   values:
   - secretRef:
       name: app-values
